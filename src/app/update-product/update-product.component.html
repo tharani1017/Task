@@ -1,0 +1,28 @@
+<h3>post work</h3>
+
+<form>
+    <label>Name:</label>
+    <input type="text" name="name" [(ngModel)]="product.name" ><br><br>
+    <label>Price</label>
+    <input type="number" name="price" [(ngModel)]="product.price"><br><br>
+    <label>color</label>
+    <input type="text" name="color" [(ngModel)]="product.color" ><br><br>
+    <label>usages</label>
+    <input type="radio" name="usages" value="Home" [(ngModel)]="product.usages">Home
+    <input type="radio" name="usages" value="Office" [(ngModel)]="product.usages">Office
+    <input type="radio" name="usages" value="Personal" [(ngModel)]="product.usages">Personal
+    <input type="radio" name="usages" value="Other" [(ngModel)]="product.usages">Other<br><br>
+     
+</form>
+<div>
+    <button (click)="goToUpdate()">submit</button>
+</div>
+
+
+
+
+
+
+
+
+

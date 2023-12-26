@@ -1,0 +1,83 @@
+ <!-- <h1>Add New Product</h1>
+<div>
+    <form (submit)="onSubmit()">
+        <div>
+            <label>Enter Name:</label>
+            <input type="text" name="name" [(ngModel)]="product.name">
+        </div>
+
+        <div>
+            <label>Enter Price:</label>
+            <input type="text" name="price" [(ngModel)]="product.price">
+        </div>
+
+        <div>
+            <label>Enter Color:</label>
+            <input type="text" name="color" [(ngModel)]="product.color">
+        </div>
+
+        <div>
+            <label>Enter Usages:</label>
+            <input type="radio" name="usages" value="home" [(ngModel)]="product.usages">Home
+            <input type="radio" name="usages" value="office" [(ngModel)]="product.usages">Office
+            <input type="radio" name="usages" value="personal" [(ngModel)]="product.usages">Personal
+            <input type="radio" name="usages" value="others" [(ngModel)]="product.usages">Others
+        </div>
+        <div>
+            <button>submit</button>
+        </div>
+    </form>
+    <div>
+        <button (click)="goToGetAllDetailsPage()">Back</button>
+    </div>
+</div> 
+
+ -->
+
+
+ <h1>Add New Product</h1>
+<div>
+    <form #productForm="ngForm" (ngSubmit)="onSubmit()">
+        <div>
+            <label for="name">Enter Name:</label>
+            <input type="text" id="name" name="name" [(ngModel)]="product.name" required minlength="3">
+            <div *ngIf="productForm.controls['name'].invalid && (productForm.controls['name'].dirty || productForm.controls['name'].touched)">
+                <p style="color: red;">Name is required and must be at least 3 characters long.</p>
+            </div>
+        </div>
+
+        <div>
+            <label for="price">Enter Price:</label>
+            <input type="number" id="price" name="price" [(ngModel)]="product.price" required min="0">
+            <div *ngIf="productForm.controls['price'].invalid && (productForm.controls['price'].dirty || productForm.controls['price'].touched)">
+                <p style="color: red;">Price is required and must be a non-negative number.</p>
+            </div>
+        </div>
+
+        <div>
+            <label for="color">Enter Color:</label>
+            <input type="text" id="color" name="color" [(ngModel)]="product.color" required minlength="3">
+            <div *ngIf="productForm.controls['color'].invalid && (productForm.controls['color'].dirty || productForm.controls['color'].touched)">
+                <p style="color: red;">Color is required and must be at least 3 characters long.</p>
+            </div>
+        </div>
+
+        <div>
+            <label>Enter Usages:</label>
+            <input type="radio" id="home" name="usages" value="home" [(ngModel)]="product.usages"  required #usages="ngModel"> Home
+            <input type="radio" id="office" name="usages" value="office" [(ngModel)]="product.usages" #usages="ngModel" required> Office
+            <input type="radio" id="personal" name="usages" value="personal" [(ngModel)]="product.usages"#usages="ngModel" required> Personal
+            <input type="radio" id="others" name="usages" value="others" [(ngModel)]="product.usages" #usages="ngModel" required> Others
+            <div *ngIf="!usages.invalid">
+                <p style="color: red;">Usages is required.</p>
+            </div>
+        </div>
+
+        <div>
+            <button type="submit" [disabled]="productForm.invalid">Submit</button>
+        </div>
+    </form>
+    <div>
+        <button (click)="goToGetAllDetailsPage()">Back</button>
+    </div>
+</div>

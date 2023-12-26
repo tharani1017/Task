@@ -1,0 +1,32 @@
+<h1>Product Details List</h1>
+<div>
+  <button (click)="goToPostProduct()">New Product</button>
+</div>
+<br> 
+<table border="1">
+  <thead>
+    <tr>
+      <th>S.No</th>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Color</th>
+      <th>Usages</th>
+      <th>Options</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let p of products; let i = index;">
+      <td>{{ i + 1 }}</td>
+      <td>{{ p.name }}</td>
+      <td>{{ p.price }}</td>
+      <td>{{ p.color }}</td>
+      <td>{{ p.usages }}</td>
+      <td>
+        <button (click)="goToGetProduct(p.id)">View</button>
+        <button (click)="goToupdateProduct(p.id)">Update</button> 
+
+        <button (click)="goToDelete(p.id)">Delete</button> 
+      </td>
+    </tr>
+  </tbody>
+</table>
